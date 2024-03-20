@@ -34,4 +34,9 @@ npx shadcn-ui@latest add sheet
 npm i lucide-react
 npx shadcn-ui@latest add separator
 
+|---------------------------
+| npx shadcn-ui@latest init
+|---------------------------
+
+
 
