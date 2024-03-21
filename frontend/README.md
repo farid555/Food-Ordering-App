@@ -37,6 +37,8 @@ npx shadcn-ui@latest add separator
 |---------------------------
 | npx shadcn-ui@latest init
 |---------------------------
+https://manage.auth0.com/
 
+npm i @auth0/auth0-react 
 
 
