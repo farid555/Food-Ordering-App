@@ -14,7 +14,7 @@ import { Button } from "./ui/button";
 const MobileNav = () => {
   const { isAuthenticated, loginWithRedirect, user } = useAuth0();
 
-  console.log("isAuthenticated", isAuthenticated, loginWithRedirect);
+  //console.log("isAuthenticated", isAuthenticated, loginWithRedirect);
 
   return (
     <Sheet>
