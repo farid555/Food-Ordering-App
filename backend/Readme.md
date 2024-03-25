@@ -12,3 +12,7 @@ node
 require("crypto").randomBytes(32).toString("hex")
 
 npm i express-oauth2-jwt-bearer
+
+npm i @types/jsonwebtoken --save-dev
+
+npm i express-validator
