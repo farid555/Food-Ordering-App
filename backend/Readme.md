@@ -10,3 +10,5 @@ git commit -m '.DS_Store banished!'
 
 node
 require("crypto").randomBytes(32).toString("hex")
+
+npm i express-oauth2-jwt-bearer
