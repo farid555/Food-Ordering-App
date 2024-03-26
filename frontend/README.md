@@ -46,5 +46,6 @@ npx shadcn-ui@latest add dropdown-menu
 
  npm i react-query
  
-
+npx shadcn-ui@latest add form
+npx shadcn-ui@latest add input
 
