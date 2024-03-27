@@ -49,3 +49,5 @@ npx shadcn-ui@latest add dropdown-menu
 npx shadcn-ui@latest add form
 npx shadcn-ui@latest add input
 
+npx shadcn-ui@latest add sonner
+
