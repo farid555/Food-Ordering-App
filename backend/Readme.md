@@ -16,3 +16,8 @@ npm i express-oauth2-jwt-bearer
 npm i @types/jsonwebtoken --save-dev
 
 npm i express-validator
+
+npm i cloudinary
+
+npm i multer
+npm i @types/multer
