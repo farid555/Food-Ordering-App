@@ -51,3 +51,5 @@ npx shadcn-ui@latest add input
 
 npx shadcn-ui@latest add sonner
 
+npx shadcn-ui@latest add aspect-ratio
+
