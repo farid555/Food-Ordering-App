@@ -39,16 +39,19 @@ const formSchema = z.object({
       price: z.coerce.number().min(1, "price is required"),
     }),
   ),
-  imageFile: z.instanceof(File, { message: "image file is required" }),
+
+  imageFile: z
+    .instanceof(File, { message: "image file is required" })
+    .optional(),
 });
 
 type Props = {
-  onSave: (restaurantFormData: FormData) => void;
+  onSave: (RestaurantFormData: FormData) => void;
   isLoading: boolean;
 };
 
 const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
-  const form = useForm<restaurantFormData>({
+  const form = useForm<RestaurantFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       cuisines: [],
@@ -56,8 +59,39 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
     },
   });
 
-  const onSubmit = (formDataJson: restaurantFormData) => {
+  const onSubmit = (formDataJson: RestaurantFormData) => {
     //TODO - convert formDataJson to a new formData object
+
+    const formData = new FormData();
+
+    formData.append("restaurantName", formDataJson.restaurantName);
+    formData.append("city", formDataJson.city);
+    formData.append("country", formDataJson.country);
+
+    //1GBP = 100 pence
+    //1.50GBP = 150pence < lowest denomination number
+    formData.append(
+      "deliveryPrice",
+      (formDataJson.deliveryPrice * 100).toString(),
+    );
+    formData.append(
+      "estimatedDeliveryTime",
+      formDataJson.estimatedDeliveryTime.toString(),
+    );
+
+    formDataJson.cuisines.forEach((cuisine, index) => {
+      formData.append(`cuisines[${index}]`, cuisine);
+    });
+    formDataJson.menuItems.forEach((menuItem, Index) => {
+      formData.append(`menuItems[${Index}][name]`, menuItem.name);
+      formData.append(
+        `menuItems[${Index}][price]`,
+        (menuItem.price * 100).toString(),
+      );
+    });
+    formData.append(`imageFile`, formDataJson.imageFile);
+
+    onSave(formData);
   };
 
   return (
@@ -73,7 +107,7 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
         <MenuSection />
         <Separator />
         <ImageSection />
-        {isLoading ? <LoadingButton/> : <Button type="submit">Submit</Button>}
+        {isLoading ? <LoadingButton /> : <Button type="submit">Submit</Button>}
       </form>
     </Form>
   );
