@@ -1,7 +1,7 @@
 import express from "express";
 import multer from "multer";
 import { jwtCheck, jwtParse } from "../middleware/auth";
-import MyRestaurantController from "../controllers/MyRestaurantController";
+import MyRestaurantController from "../controllers/MyRestaurantController"; 
 import { validateMyRestaurantRequest } from "../middleware/validation";
 
 const router = express.Router();
